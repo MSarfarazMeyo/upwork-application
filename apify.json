@@ -1,0 +1,7 @@
+{
+	"name": "upwork-autoapply",
+	"version": "0.1",
+	"buildTag": "latest",
+	"env": {},
+	"template": "project_puppeteer_crawler"
+}

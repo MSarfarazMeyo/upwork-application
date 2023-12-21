@@ -1,0 +1,123 @@
+{
+  "title": "PuppeteerCrawler Template",
+  "description": "",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "username": {
+      "title": "Username or Email",
+      "description": "Username or Email of the account",
+      "type": "string",
+      "editor": "textfield"
+    },
+    "password": {
+      "title": "Password",
+      "description": "Password of the account",
+      "type": "string",
+      "editor": "textfield"
+    },
+    "startUrls": {
+      "title": "Start URLs",
+      "type": "array",
+      "description": "Job application URLs.",
+      "editor": "requestListSources"
+    },
+    "coverLetter": {
+      "title": "Default Cover Letter text.",
+      "description": "This text is placed in the cover letter field unless a custom cover letter text was set to the URL",
+      "type": "string",
+      "editor": "textarea"
+    },
+    "defaultAnswer": {
+      "title": "Default answer to possible question fields",
+      "description": "This text is placed in each question field tha is not the cover letter",
+      "type": "string",
+      "prefill": "Let's get on a call",
+      "editor": "textarea"
+    },
+    "securityQuestion": {
+      "title": "Answer for the security question",
+      "description": "Upwork may request your security quetion to make sure it you accessing your account",
+      "type": "string",
+      "editor": "textfield"
+    },
+    "proxyConfig": {
+      "title": "Proxy configuration",
+      "type": "object",
+      "editor": "proxy",
+      "description": "Select proxies to be used",
+      "prefill": {
+        "useApifyProxy": true
+      }
+    },
+    "debugMode": {
+      "title": "Debug mode",
+      "description": "Enable debug mode",
+      "type": "boolean",
+      "default": false
+    },
+    "testMode": {
+      "title": "Test mode",
+      "description": "Run normally but skip the submission step",
+      "type": "boolean",
+      "default": false
+    },
+    "agency": {
+      "title": "Agency",
+      "description": "Name of agency",
+      "type": "string",
+      "editor": "textfield"
+    },
+    "freelancer": {
+      "title": "Freelancer",
+      "description": "Name of of freelancer",
+      "type": "string",
+      "editor": "textfield"
+    },
+    "autoRefill": {
+      "title": "Auto refill",
+      "description": "Check this if you want to auto refill connects when it's bellow 10 connects",
+      "type": "boolean",
+      "default": false
+    },
+    "autoRefillAmount": {
+      "title": "Auto refill ammount",
+      "description": "Select the amout you want to refill",
+      "type": "string",
+      "default": "100",
+      "enum": [
+        "10",
+        "20",
+        "40",
+        "60",
+        "80",
+        "100",
+        "150",
+        "200",
+        "250",
+        "300"
+      ]
+    },
+    "attachments": {
+      "title": "Attachments",
+      "type": "array",
+      "description": "Direct links of files to attach",
+      "prefill": [],
+      "editor": "requestListSources"
+    },
+    "ignoreDuplicateProposals": {
+      "title": "Ignore Duplicate proposals",
+      "description": "Ignore the failure/error in case of an existing proposal",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "username",
+    "password",
+    "startUrls",
+    "coverLetter",
+    "defaultAnswer",
+    "securityQuestion"
+  ]
+}
