@@ -12,7 +12,7 @@ exports.logger = utils.log;
 exports.validateStartUrls = (urls) => {
     let hasError = false;
     urls.forEach(({ url }) => {
-        if (url && !url.match(/upwork\.com\/ab\/proposals\/job\/([^/]+)\/apply/)) {
+        if (!url.match(/upwork\.com\/ab\/proposals\/job\/([^/]+)\/apply/)) {
             this.logger.error('Url not supported', { url });
             hasError = true;
         }
