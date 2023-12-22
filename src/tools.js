@@ -11,7 +11,7 @@ exports.logger = utils.log;
  */
 exports.validateStartUrls = (urls) => {
     let hasError = false;
-    urls.forEach(({ requestsFromUrl }) => {
+    urls.forEach((requestsFromUrl ) => {
         if (!requestsFromUrl.match(/upwork\.com\/ab\/proposals\/job\/([^/]+)\/apply/)) {
             this.logger.error('Url not supported', { requestsFromUrl });
             hasError = true;
