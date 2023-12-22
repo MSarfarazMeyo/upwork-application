@@ -11,9 +11,12 @@ exports.logger = utils.log;
  */
 exports.validateStartUrls = (urls) => {
   let hasError = false;
-  urls.forEach(({ url }) => {
-    if (url && !url.match(/upwork\.com\/ab\/proposals\/job\/([^/]+)\/apply/)) {
-      this.logger.error("Url not supported", { url });
+  urls.forEach(( item ) => {
+
+     this.logger.info("processing url", { item.url });
+    
+    if (item?.url && !item?.url.match(/upwork\.com\/ab\/proposals\/job\/([^/]+)\/apply/)) {
+      this.logger.error("Url not supported", { item?.url });
       hasError = true;
     }
   });
