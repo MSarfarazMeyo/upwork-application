@@ -180,7 +180,7 @@ exports.handleApplication = async ({ request, page, session, crawler }, { coverL
        //     button => button.click()
 
 
-                await page.waitForSelector('.air3-fullscreen-container .up-modal-close', { visible: true, timeout: 2000 }).then(
+                await page.waitForSelector('.air3-modal-header .up-modal-close', { visible: true, timeout: 2000 }).then(
             button => button.click()
             
         ).catch(() => { })
@@ -259,7 +259,7 @@ exports.handleApplication = async ({ request, page, session, crawler }, { coverL
    //     async button => {
 
 
-                await page.waitForSelector('.air3-fullscreen-container button', { visible: true, timeout: 5000 }).then(
+                await page.waitForSelector('.air3-modal-footer button', { visible: true, timeout: 5000 }).then(
         async button => {
 
             
