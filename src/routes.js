@@ -176,13 +176,8 @@ exports.handleApplication = async ({ request, page, session, crawler }, { coverL
 
     if (agency) {
         logger.warning("Agency Options", agency);
-   //     await page.waitForSelector('.fe-proposal-more-connects-needed-dialog .up-modal-close', { visible: true, timeout: 2000 }).then(
-       //     button => button.click()
-
-
-                await page.waitForSelector('.air3-modal-header .up-modal-close', { visible: true, timeout: 2000 }).then(
-            button => button.click()
-            
+   await page.waitForSelector('.fe-proposal-more-connects-needed-dialog .air3-modal-header .up-modal-close', { visible: true, timeout: 2000 }).then(
+      button => button.click()
         ).catch(() => { })
         await Apify.utils.sleep(1000);
         await page.waitForSelector('.nav-messages ~ .nav-dropdown-account .nav-item-label', { visible: true }).then(
@@ -255,14 +250,8 @@ exports.handleApplication = async ({ request, page, session, crawler }, { coverL
 
     let connectRefilled
 
-  //  await page.waitForSelector('.fe-proposal-more-connects-needed-dialog .desktop-size-controls button', { visible: true, timeout: 5000 }).then(
-   //     async button => {
-
-
-                await page.waitForSelector('.air3-modal-footer button', { visible: true, timeout: 10000 }).then(
-        async button => {
-
-            
+    await page.waitForSelector('.fe-proposal-more-connects-needed-dialog .air3-modal-footer button', { visible: true, timeout: 5000 }).then(
+       async button => { 
             console.log('Refill connects')
             await button.click()
             await this.handleRefillConnects(page, autoRefillAmount)
