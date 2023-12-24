@@ -259,7 +259,7 @@ exports.handleApplication = async ({ request, page, session, crawler }, { coverL
    //     async button => {
 
 
-                await page.waitForSelector('.air3-modal-footer button', { visible: true, timeout: 5000 }).then(
+                await page.waitForSelector('.air3-modal-footer button', { visible: true, timeout: 10000 }).then(
         async button => {
 
             
