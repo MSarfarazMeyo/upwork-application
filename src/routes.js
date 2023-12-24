@@ -252,7 +252,7 @@ exports.handleApplication = async ({ request, page, session, crawler }, { coverL
 
     await page.waitForSelector('.fe-proposal-more-connects-needed-dialog .air3-modal-footer button', { visible: true, timeout: 5000 }).then(
        async button => { 
-            console.log('Refill connects')
+            logger.info('Refill connects: autoRefillAmount =>' , autoRefillAmount)
             await button.click()
             await this.handleRefillConnects(page, autoRefillAmount)
             connectRefilled = true
