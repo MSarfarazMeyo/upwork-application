@@ -143,6 +143,7 @@ exports.handleRefillConnects = async (page, autoRefillAmount) => {
   await page.$eval("#footerButtonMain", (button) => button.scrollIntoView());
   await page.click("#footerButtonMain");
   await page.waitForNavigation();
+  await Apify.utils.sleep(1000);
   await page
     .waitForSelector('[data-qa="fulfill"]')
     .then(async (button) => await button.click());
@@ -323,6 +324,7 @@ exports.handleApplication = async (
     .then(async (button) => {
       console.log("Refill connects");
       await button.click();
+      await page.waitForNavigation();
       await this.handleRefillConnects(page, autoRefillAmount);
       connectRefilled = true;
     })
