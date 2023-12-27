@@ -145,7 +145,7 @@ exports.handleRefillConnects = async (page, autoRefillAmount) => {
   await page.waitForNavigation();
   await page
     .waitForSelector('[data-qa="fulfill"]')
-    .then((button) => button.click());
+    .then(async (button) => await button.click());
   // await Apify.utils.sleep(1000 * 2);
   await page.waitForNavigation();
 };
@@ -281,6 +281,7 @@ exports.handleApplication = async (
       });
   } else {
     logger.warning("Freelancer Options");
+    await Apify.utils.sleep(3000);
     await Promise.all([
       page
         .waitForXPath(
@@ -313,23 +314,13 @@ exports.handleApplication = async (
   }
 
   let connectRefilled;
-
+  await Apify.utils.sleep(3000);
   await page
     .waitForSelector(".air3-modal-footer  button", {
       visible: true,
       timeout: 50000,
     })
     .then(async (button) => {
-      const buttonTextHandle = await button.evaluateHandle(
-        (element) => element.innerText
-      );
-
-      // Fetch the text content from the handle
-      const buttonText = await buttonTextHandle.jsonValue();
-
-      // Log the inner text
-      console.log("Button Inner Text: ", buttonText);
-
       console.log("Refill connects");
       await button.click();
       await this.handleRefillConnects(page, autoRefillAmount);
