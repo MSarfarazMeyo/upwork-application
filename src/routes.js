@@ -214,7 +214,7 @@ exports.handleApplication = async (
   if (agency) {
     logger.warning("Agency Options", agency);
     await page
-      .waitForSelector(".air3-modal-footer button", {
+      .waitForSelector(".air3-modal-header button", {
         visible: true,
         timeout: 2000,
       })
@@ -320,6 +320,16 @@ exports.handleApplication = async (
       timeout: 50000,
     })
     .then(async (button) => {
+      const buttonTextHandle = await button.evaluateHandle(
+        (element) => element.innerText
+      );
+
+      // Fetch the text content from the handle
+      const buttonText = await buttonTextHandle.jsonValue();
+
+      // Log the inner text
+      console.log("Button Inner Text: ", buttonText);
+
       console.log("Refill connects");
       await button.click();
       await this.handleRefillConnects(page, autoRefillAmount);
