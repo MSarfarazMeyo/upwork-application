@@ -139,10 +139,14 @@ exports.handleRefillConnects = async (page, autoRefillAmount) => {
       })
       .catch(() => {});
   } while (!chosed);
+  console.log("on select connect page");
   await Apify.utils.sleep(1000);
+
   await page.$eval("#footerButtonMain", (button) => button.scrollIntoView());
   await page.click("#footerButtonMain");
   await page.waitForNavigation();
+  console.log("on buy connect page");
+
   await Apify.utils.sleep(1000);
   await page
     .waitForSelector('[data-qa="fulfill"]')
